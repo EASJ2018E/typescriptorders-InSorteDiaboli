@@ -1,5 +1,7 @@
 $fontColor: #0091aa;
 $colorHeading: #be4a14;
+$colorNav: #000;
+$colorHover: blue;
 #content  // div with id: content
 {
     color: $fontColor;
@@ -12,4 +14,9 @@ h2
 
 h1{
     @extend h2;
+}
+
+div {
+    height: 50px;
+    width: 100px;
 }

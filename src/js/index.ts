@@ -1,12 +1,18 @@
-interface Person {
-    firstName: string;
-    lastName: string;
-}
+import axios, {
+    AxiosResponse,
+    AxiosError} from "../../node_modules/axios/index";
 
-function greeter(person: Person): string {
-    return "Hello, " + person.firstName + " " + person.lastName;
-}
-let user: Person = { firstName: "John", lastName: "Doe" };
+import { OrdreLinie } from "../js/OrdreLinie";
 
-let element: HTMLDivElement = <HTMLDivElement> document.getElementById("content");
-element.innerHTML = greeter(user);
+import { PrintHTML } from "../js/PrintHTML";
+
+let content:HTMLDivElement = <HTMLDivElement> document.getElementById("content");
+
+let orderlinie:OrdreLinie = new OrdreLinie(1, 4, 2, 200, 0);
+
+let orderlinieprint:string = "Id: " + orderlinie.SalesOrderId + " Antal: " + orderlinie.OrderQty + " Produktid: " + orderlinie.ProductId + " Pris: " + orderlinie.UnitPrice + " Rabat: " + orderlinie.UnitPriceDiscount;
+
+let orderliniemethodprint:string = "Samlet pris: " + orderlinie.BeregnSum() + " Moms: " + orderlinie.Moms() + " Med moms: " + orderlinie.InklMoms();
+
+content.innerText = orderlinieprint;
+content.innerText = orderliniemethodprint;
